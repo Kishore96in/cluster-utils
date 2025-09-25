@@ -4,7 +4,7 @@ To use these, clone the repository at, say, `~/.software/cluster-utils/`, and ad
 
 ## PBS
 ```
-_job_script_name="job.sh"
+_job_script_name="job.pbs"
 _cluster_utils_location="$HOME/.software/cluster-utils"
 . "$_cluster_utils_location"/bash/pbs/monitoring.sh
 . "$_cluster_utils_location"/bash/pbs/submission.sh
