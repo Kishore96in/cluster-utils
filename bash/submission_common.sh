@@ -1,4 +1,3 @@
-#TODO: make get_job_workdir take the job ID as argument? Ah. I suppose the initial motivation was to avoid multiple (slow) calls to qstat.
 #TODO: it seems some of these functions are becoming complicated enough that I should write them as Python scripts (this would allow me to reuse the logic in more places)
 
 function pc_stop {

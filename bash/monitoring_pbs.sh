@@ -24,12 +24,12 @@ function _ntype {
 	fi
 }
 export -f _ntype
-function get_job_workdir {
+function _get_job_workdir {
 	#Parse output of qstat -wf to get the job's workdir
 	qsoutput="$@"
 	echo "$qsoutput" | grep WORKDIR | tr ',' '\n' | grep WORKDIR | cut -d'=' -f 2
 }
-export -f get_job_workdir
+export -f _get_job_workdir
 function myj {
 	tmpfile="/tmp/kishore_jobs_$BASHPID.txt"
 	truncate -s 0 "$tmpfile" #Make the file empty.
@@ -50,7 +50,7 @@ function myj {
 		fi
 		#wdir="$(echo "$qsoutput" | grep WORKDIR | cut -d',' -f 7 | cut -d'=' -f 2 )"
 		#wdir="$(echo "$qsoutput" | grep WORKDIR | tr ',' '\n' | grep WORKDIR | cut -d'=' -f 2 )"
-		wdir=$(get_job_workdir "$qsoutput")
+		wdir=$(_get_job_workdir "$qsoutput")
 		if [ "$jobstat" = "R" ]
 		then
 			walltime="$(echo "$qsoutput" | grep resources_used.walltime | cut -d'=' -f 2 | tr -d ' ')"
