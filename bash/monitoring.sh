@@ -9,6 +9,7 @@ alias myq="qstat -taw | grep $USER" #All jobs belonging to the current user
 alias jinfo='qstat -f' #Get information about a job ID
 
 function _ntype {
+	#TODO: I suppose this is specific to IUCAA's Pegasus.
 	#Find which node type a job requested
 # 	nt="$(qstat -f "$@" | grep Resource_List.select | tr ':' '\n' | grep node_type | cut -d '=' -f 2)"
 	nt="$(echo "$@" | grep Resource_List.select | tr ':' '\n' | grep node_type | cut -d '=' -f 2)"
