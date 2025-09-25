@@ -5,7 +5,7 @@
 alias ja="squeue --format='%.6i  %.2t %.9L %.3C' " #All jobs
 alias jaq='squeue --format="%.6i  %.2t %.9L %.3C" | grep PD' #All queued jobs
 alias jar='squeue --format="%.6i  %.2t %.9L %.3C" | grep R' #All running jobs
-alias myq="squeue --format='%.6i  %.2t %.9L %.3C' | grep $USER" #All jobs belonging to the current user
+alias myq="squeue --format='%.6i  %.2t %.9L %.3C'-u $USER" #All jobs belonging to the current user
 alias jinfo='scontrol show job' #Get information about a job ID
 
-alias myj="squeue --format='%.6i  %.2t %.9L %.3C  %Z' --sort='-ti' | sed \"s#$HOME#~#g\" | sed 's#\./##g'"
+alias myj="squeue --format='%.6i  %.2t %.9L %.3C  %Z' --sort='-ti' -u $USER | sed \"s#$HOME#~#g\" | sed 's#\./##g'"
