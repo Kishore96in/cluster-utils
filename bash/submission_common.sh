@@ -101,5 +101,5 @@ function pc_subh {
 	pc_sub "$@"
 	}
 
-#TODO: pc_resub, resub (see implementation on Pegasus). I suppose it may make sense to just chain pc_stop and sub.
+#TODO: pc_resub, resub (see implementation on Pegasus). I suppose it may make sense to just chain pc_stop and sub. Note that at least on SLURM with lmod (not tclmod), even the `module` command is not defined in the job script's context; one HAS to use --export=ALL to get the modules active at the time of job submission. It then makes sense to also make the `sub` function load the modules before calling sbatch/qsub.
 #TODO: resubh, pc_resubh (see implementation on Pegasus)
