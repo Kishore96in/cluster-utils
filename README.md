@@ -1,6 +1,8 @@
 # Installation
 
-To use these, clone the repository at, say, `~/.software/cluster-utils/`, and add the following to your bashrc (depending on the scheduler available).
+To use these,
+1. clone the repository at, say, `~/.software/cluster-utils/`; and
+2. depending on the scheduler available, add one of the following to your `~/.bash_profile`.
 
 ## PBS
 ```
