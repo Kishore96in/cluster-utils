@@ -1,5 +1,7 @@
 #TODO: it seems some of these functions are becoming complicated enough that I should write them as Python scripts (this would allow me to reuse the logic in more places)
 
+#NOTE: must be sourced after either of {pbs,slurm}/submission.sh
+
 function pc_stop {
 	#Stop pencil jobs given a set of job ids as arguments
 	cdir=$(pwd)
