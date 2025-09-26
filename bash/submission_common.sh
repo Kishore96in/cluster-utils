@@ -31,7 +31,15 @@ function sub {
 		for dir in "$@"
 		do
 			if test -e "$dir"; then
+				(
 				cd "$dir"
+				
+				#Load modules to ensure that SLURM picks up the right environment for the job
+				if test -e "load_modules.sh"; then
+					module purge
+					source load_modules.sh
+				fi
+				
 				$_submit_batch "$_job_script_name"
 				if [ $? -ne 0 ]
 				then
@@ -41,7 +49,7 @@ function sub {
 				else
 						echo "Successfully submitted job in $dir"
 				fi
-				cd "$cdir"
+				)
 			else
 				echo $dir does not exist!
 			fi
