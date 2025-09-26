@@ -26,34 +26,34 @@ function pc_reload {
 }
 
 function sub {
-		#Submit jobs given a set of directories as arguments
-		cdir=$(pwd)
-		for dir in "$@"
-		do
-			if test -e "$dir"; then
-				(
-				cd "$dir"
-				
-				#Load modules to ensure that SLURM picks up the right environment for the job
-				if test -e "load_modules.sh"; then
-					module purge
-					source load_modules.sh
-				fi
-				
-				$_submit_batch "$_job_script_name"
-				if [ $? -ne 0 ]
-				then
-						echo "$(tput bold)"
-						echo "Failed submitting job in $dir"
-						echo "$(tput sgr0)"
-				else
-						echo "Successfully submitted job in $dir"
-				fi
-				)
-			else
-				echo $dir does not exist!
+	#Submit jobs given a set of directories as arguments
+	cdir=$(pwd)
+	for dir in "$@"
+	do
+		if test -e "$dir"; then
+			(
+			cd "$dir"
+			
+			#Load modules to ensure that SLURM picks up the right environment for the job
+			if test -e "load_modules.sh"; then
+				module purge
+				source load_modules.sh
 			fi
-		done
+			
+			$_submit_batch "$_job_script_name"
+			if [ $? -ne 0 ]
+			then
+				echo "$(tput bold)"
+				echo "Failed submitting job in $dir"
+				echo "$(tput sgr0)"
+			else
+				echo "Successfully submitted job in $dir"
+			fi
+			)
+		else
+			echo $dir does not exist!
+		fi
+	done
 }
 function subh {
 	local _submit_batch_orig="$_submit_batch"
@@ -68,36 +68,36 @@ function _get_pcver {
 	}
 
 function _pc_sub {
-        #First argument is the name of the job script, and the remaining arguments are the directories to use.
-        scriptname="$1"
-        shift
-        for dir in "$@"
-        do
-                (
-                if test -e "$dir"; then
-                        cd "$dir"
+	#First argument is the name of the job script, and the remaining arguments are the directories to use.
+	scriptname="$1"
+	shift
+	for dir in "$@"
+	do
+		(
+		if test -e "$dir"; then
+			cd "$dir"
 
-                        if test -e "load_modules.sh"; then
-                                module purge
-                                source load_modules.sh
-                        fi
+			if test -e "load_modules.sh"; then
+				module purge
+				source load_modules.sh
+			fi
 
-                        echo "$(date)" > build_output.txt
-                        echo Pencil version: "$(_get_pcver)" >> build_output.txt
-                        pc_setupsrc >> build_output.txt 2>&1 && pc_build >> build_output.txt 2>&1 && $_submit_batch "$scriptname"
-                        if [ $? -ne 0 ]
-                        then
-                                echo "$(tput bold)"
-                                echo "Failed submitting job in $dir"
-                                echo "$(tput sgr0)"
-                        else
-                                echo "Successfully submitted job in $dir"
-                        fi
-                else
-                        echo $dir does not exist!
-                fi
-                )
-        done
+			echo "$(date)" > build_output.txt
+			echo Pencil version: "$(_get_pcver)" >> build_output.txt
+			pc_setupsrc >> build_output.txt 2>&1 && pc_build >> build_output.txt 2>&1 && $_submit_batch "$scriptname"
+			if [ $? -ne 0 ]
+			then
+				echo "$(tput bold)"
+				echo "Failed submitting job in $dir"
+				echo "$(tput sgr0)"
+			else
+				echo "Successfully submitted job in $dir"
+			fi
+		else
+			echo $dir does not exist!
+		fi
+		)
+	done
 }
 
 function pc_sub {
