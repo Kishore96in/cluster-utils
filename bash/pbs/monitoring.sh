@@ -1,7 +1,5 @@
 #Aliases and functions to help monitor PBS jobs
 
-#TODO: in config.sh, may set a variable that chooses between SLURM and PBS. PBS- or SLURM-specific stuff can then be moved to separate files which are conditionally included.
-
 alias ja='qstat -taw' #All jobs
 alias jaq='qstat -taw | grep Q' #All queued jobs
 alias jar='qstat -taw | grep R' #All running jobs
