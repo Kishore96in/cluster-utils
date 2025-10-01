@@ -7,7 +7,7 @@ function pc_stop {
 	cdir=$(pwd)
 	for job in "$@"
 	do
-		dir=$(get_job_workdir "$(qstat -wf $job)")
+		dir=$(get_workdir_for_jobid $job)
 		cd "$dir"
 		touch STOP
 		cd "$cdir"
@@ -18,7 +18,7 @@ function pc_reload {
 	cdir=$(pwd)
 	for job in "$@"
 	do
-		dir=$(get_job_workdir "$(qstat -wf $job)")
+		dir=$(get_workdir_for_jobid $job)
 		cd "$dir"
 		touch RELOAD
 		cd "$cdir"
