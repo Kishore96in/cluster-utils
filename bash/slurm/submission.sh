@@ -1,5 +1,5 @@
 alias jdel='scancel'
-alias jint='salloc --ntasks=1 srun --pty bash'
+alias jint='salloc --ntasks=1 srun --pty bash -l'
 
 function create_dependency {
 	#Argument to be passed to _submit_batch to create a dependency on a job (ID of the latter passed as argument)
