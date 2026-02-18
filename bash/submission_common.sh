@@ -57,7 +57,7 @@ function sub {
 }
 function subh {
 	local _submit_batch_orig="$_submit_batch"
-	local _submit_batch="$_submit_batch_orig -h"
+	local _submit_batch="$_submit_batch_orig $_submit_batch_held_flag"
 	sub "$@"
 	}
 

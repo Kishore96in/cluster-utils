@@ -8,6 +8,7 @@ function create_dependency {
 	}
 
 _submit_batch="qsub" #this will be used unquoted in some contexts.
+_submit_batch_held_flag="-h"
 
 function get_workdir_for_jobid {
 	_get_job_workdir "$(qstat -wf $@)"

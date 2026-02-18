@@ -8,6 +8,7 @@ function create_dependency {
 	}
 
 _submit_batch="sbatch" #this will be used unquoted in some contexts.
+_submit_batch_held_flag="-H"
 
 function get_workdir_for_jobid {
 	scontrol show job $@ | grep WorkDir | cut -d '=' -f 2
