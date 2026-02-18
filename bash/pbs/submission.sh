@@ -1,5 +1,7 @@
 alias jdel='qdel'
 alias jint='qsub -I -lselect=1:ncpus=1'
+alias jhold='qhold'
+alias jrls='qrls'
 
 function create_dependency {
 	#Argument to be passed to _submit_batch to create a dependency on a job (ID of the latter passed as argument)

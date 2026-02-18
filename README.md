@@ -35,6 +35,8 @@ _cluster_utils_location="$HOME/.software/cluster-utils"
 ### Generic
 - `jdel $job_id`: cancels a job
 - `jint`: requests an interactive job
+- `jhold $job_id`: hold a queued job
+- `jrls $job_id`: release a held job
 - `sub $job_dir_1 $job_dir_2`: submit jobs, one job for each given directory
 - `subh $job_dir_1 $job_dir_2`: submit jobs in a held state
 
