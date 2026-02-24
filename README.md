@@ -44,4 +44,4 @@ _cluster_utils_location="$HOME/.software/cluster-utils"
 - `pc_stop $job_id_1 $job_id_2`
 - `pc_reload $job_id_1 $job_id_2`
 - `pc_sub $job_id_1 $job_id_2`
-- `pc_suh $job_id_1 $job_id_2`
+- `pc_subh $job_id_1 $job_id_2`
