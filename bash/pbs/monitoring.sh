@@ -34,7 +34,11 @@ function myj {
 	echo "Job ID" "," " " "," "Walltime" "," "CPU" "," "nod"  "," "Working directory" >> "$tmpfile"
 	
 	jobs=$(qstat -t | grep "$USER" | awk '{print $1 "," $5}')
-	n_unheld_jobs=$(echo $jobs | tr ' ' '\n' | grep -v H | wc -l)
+	if test -z "$jobs"; then
+		n_unheld_jobs=0
+	else
+		n_unheld_jobs=$(echo $jobs | tr ' ' '\n' | grep -v H | wc -l)
+	fi
 	cores=0 #Count the total number of cores I am using
 	for job in $jobs
 	do 
