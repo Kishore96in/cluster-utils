@@ -1,4 +1,5 @@
 #TODO: it seems some of these functions are becoming complicated enough that I should write them as Python scripts (this would allow me to reuse the logic in more places)
+#TODO: to make things shell-independent, may make sense to just package each function as an individual bash script (but need to figure out how to reuse code in that case).
 
 #NOTE: must be sourced after either of {pbs,slurm}/submission.sh
 
